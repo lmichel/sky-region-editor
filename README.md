@@ -1,6 +1,20 @@
 # sky-region-editor
 JS widget for editing polygons. Based on AladinLite.
 
+
+# Testing the widget
+
+- You need to run a HTTP server to make the JS code working
+- Lite servers can be run on your working directory
+
+### With Python
+```
+% cd sky-region-editor
+% python3 -m http.server
+```
+
+### With Node
+
 ```
 % install node
 % ls
