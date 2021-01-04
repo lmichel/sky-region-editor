@@ -1,0 +1,66 @@
+<html>
+  <head>
+  
+   <link href="css/basics.css" rel="stylesheet">
+   <link href="css/skyRegion.css" rel="stylesheet">
+   <link href="cssimports/aladinlite.css" rel="stylesheet">
+   <link href="cssimports/aladin.min.css" rel="stylesheet">
+  
+   <script type="text/javascript" src="jsimports/jquery.js"></script>
+   <script type="text/javascript" src="jsimports/aladin.js"></script>
+   <script type="text/javascript" src="js/utils.js"></script>
+   <script type="text/javascript" src="js/AstroCoo.js"></script>
+   <script type="text/javascript" src="js/segment.js"></script>
+   <script type="text/javascript" src="js/STCRegion.js"></script>
+   <script type="text/javascript" src="js/RegionEditor_v.js"></script>
+   <script type="text/javascript" src="js/RegionEditor_c.js"></script>
+   <script type="text/javascript" src="js/RegionEditor_m.js"></script>
+   <script type="text/javascript" src="js/PublicApi.js"></script>
+  
+  </head>
+  <body>
+    <h3>Region Editor Demo Page</h3>
+   <div id="aladin_global" style="width: 400px; height:500px">
+  
+    <div id="aladin_div" style="width: 400px; height:400px"></div>
+    </div>    
+    <button type="button" onclick="alert(SkyRegionEditor.getFootprint())">getFootprint</button>
+    <button type="button" onclick="SkyRegionEditor.setFootprint('213.8925 44.575 213.8925 45.295 214.6125 45.295 214.6125 44.575')">setFootprint</button>
+    <button type="button" onclick="SkyRegionEditor.delFootprint()">delFootprint</button>
+  </body>
+
+   
+  <script type="text/javascript">
+  $().ready(function() {
+	  handler = function(data){ if( data.userAction ) alert(JSON.stringify(data));}
+
+	  SkyRegionEditor.init("aladin_div", handler); 
+	  //SkyRegionEditor.setFootprint("213.8925 44.575 213.8925 45.295 214.6125 45.295 214.6125 44.575");
+	  return;
+	  regionEditor = SkyRegionEditor.getEditor()
+	  //regionEditor.init();
+      //regionEditor.setInitialValue(points);
+      setTimeout(function(){$("#edit")[0].click()}, 2000);
+
+      stcRegion = new STCRegion("POLYGON ICRS 213.8925 44.575 213.8925 45.295 214.6125 45.295 214.6125 44.575")
+      stcRegion = new STCRegion("213.8925 44.575 213.8925 45.295 214.6125 45.295 214.6125 44.575")
+
+      regionEditor.aladin.gotoObject(stcRegion.raCenter + ' ' + stcRegion.decCenter);
+      regionEditor.aladin.setZoom(2*stcRegion.size);
+      console.log(stcRegion.coords)
+      regionEditor.setInitialValue({type: "array", value: stcRegion.coords});
+
+      //displayInfo(stcRegion.stcString);
+      var overlay = A.graphicOverlay({color: 'blue', lineWidth: 2});
+      regionEditor.aladin.addOverlay(overlay);
+      overlay.addFootprints(A.polygon(stcRegion.points));             
+      //setTimeout(function(){overlay.removeAll();}, 2000);
+
+      //onclick='ModalAladin.showSTCRegion(new STCRegion("POLYGON ICRS 213.8925 44.575 213.8925 45.295 214.6125 45.295 214.6125 44.575"));'>STC Region</a> ModalAladin.showSTCRegion</td>
+
+
+  });
+  </script>
+  
+  
+</html>
