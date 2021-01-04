@@ -37,7 +37,15 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: cat *.js >> ${{ env.doc_name }}.js
+        run: |
+          cat utils.js > ${{ env.doc_name }}.js
+          cat AstroCoo.js >> ${{ env.doc_name }}.js
+          cat segment.js >> ${{ env.doc_name }}.js
+          cat STCRegion.js >> ${{ env.doc_name }}.js
+          cat RegionEditor_v.js >> ${{ env.doc_name }}.js
+          cat RegionEditor_c.js >> ${{ env.doc_name }}.js
+          cat RegionEditor_m.js >> ${{ env.doc_name }}.js
+          cat PublicApi.js >> ${{ env.doc_name }}.js
 
       - name: Check the output
         run: |
