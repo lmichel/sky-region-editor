@@ -40,7 +40,7 @@ jobs:
         run: |
           cat utils.js > ${{ env.doc_name }}.js
           cat AstroCoo.js >> ${{ env.doc_name }}.js
-          cat segment.js >> ${{ env.doc_name }}.js
+          cat Segment.js >> ${{ env.doc_name }}.js
           cat STCRegion.js >> ${{ env.doc_name }}.js
           cat RegionEditor_v.js >> ${{ env.doc_name }}.js
           cat RegionEditor_c.js >> ${{ env.doc_name }}.js
