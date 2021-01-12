@@ -29,3 +29,7 @@ Available on:
   http://192.168.0.10:8080
 Hit CTRL-C to stop the server
 ```
+### License Watchout
+This project contains imported resources (`cssimports` and `jsimports`) that are not covered by the licenses.
+- This allows users to run the demo just with repository resources
+- This porvides working spare resources in case of broken compatibility between the current JS code and imported `css` or `JS`
